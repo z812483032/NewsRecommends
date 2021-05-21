@@ -1,0 +1,14 @@
+{% load i18n %}
+
+<div class="grp-module grp-filter">
+    <div class="grp-row">
+        <form>
+            <label>{% blocktrans with title|capfirst as filter_title %}{{ filter_title }}{% endblocktrans %}</label>
+            <div class="field">
+                <input type="text" name="{{ spec.parameter_name }}" placeholder="All" value="{{ spec.used_param }}" class="autocomplete" style="display: none;" id="id_{{ spec.parameter_name }}" />
+                <a href="{{ spec.grappelli_trick }}" style="display: none;">grappelli_trick</a>
+                <div class="grp-changelist-results"></div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+
+[:python_version < "3"]
+django<2
+djangorestframework<3.10
+openpyxl<3
+django-import-export<2
+
+[:python_version >= "3"]
+django
+djangorestframework
+django-import-export
+
+[dev]
+check-manifest
+
+[test]
+coverage

@@ -1,0 +1,65 @@
+{% load i18n %}
+
+<div class="grp-module grp-date-filter">
+    <div class="grp-row">
+        <label>{% blocktrans with title|capfirst as filter_title %}{{ filter_title }}{% endblocktrans %}</label>
+        <form class="search_filter_form multi_filter_form" style="text-align:center;{% if spec.val_gte or spec.val_lte %}display:none;{% endif %}">
+            <div class="field" style="width: 100%; float: left">
+                <input type="text" name="{{ spec.parameter_name }}__exact" placeholder="-" value="{{ spec.val_exact }}" size="10" class="vDateField" />
+            </div>
+            <input type="button" value="<->" style="float: left; padding: 3px 9px; height: 22px; margin: 1px 0 0 0; max-width:25%;" class="search_form_next"/>
+            <input type="submit" value="筛选" style="float: right; padding: 3px 9px; height: 22px; margin: 1px 0 0 0; max-width:25%;" class="search_filter_apply"/>
+            <input type="submit" name="{{ spec.parameter_name }}__isnull" value="为空" style="padding: 3px 9px; height: 22px; margin: 1px 0 0; max-width:25%;" class="search_filter_isnull"/>
+        </form>
+        <form class="search_filter_form multi_filter_form"{% if spec.val_gte or spec.val_lte %}{% else %} style="display:none;"{% endif %}>
+            <div class="field" style="width: 100%; float: left">
+                <input type="text" name="{{ spec.parameter_name }}__gte" placeholder="-" value="{{ spec.val_gte }}" size="10" class="vDateField" />
+                <input type="text" name="{{ spec.parameter_name }}__lte" placeholder="-" value="{{ spec.val_lte }}" size="10" class="vDateField" />
+            </div>
+            <input type="button" value="<->" style="float: left; padding: 3px 9px; height: 22px; margin: 1px 0 0 0; max-width:25%;" class="search_form_prev"/>
+            <input type="submit" value="筛选" style="float: right; padding: 3px 9px; height: 22px; margin: 1px 0 0 0; max-width:25%;" class="search_filter_apply" />
+        </form>
+    </div>
+
+    <script type="text/javascript">
+        django.jQuery(function($) {
+            $(".grp-date-filter .multi_filter_form .search_form_prev").on("click", function (event) {
+                var parentForm = $(this).parents("form").first();
+                parentForm.hide();
+                parentForm.prev("form").first().show();
+            });
+            $(".grp-date-filter .multi_filter_form .search_form_next").on("click", function (event) {
+                var parentForm = $(this).parents("form").first();
+                parentForm.hide();
+                parentForm.next("form").first().show();
+            });
+            $(".grp-date-filter .search_filter_isnull").on("click", function(event) {
+                event.preventDefault();
+                var $form = $(this).parents("form");
+                var query_isnull = this.name;
+                $form.parent().find("input.vDateField").each(function(){
+                    delete urlParams[this.name];
+                });
+                urlParams[query_isnull] = "True";
+                reloadParams();
+            });
+            $(".grp-date-filter .search_filter_apply").on("click", function (event) {
+                event.preventDefault();
+
+                var $form = $(this).parents("form");
+                var query_isnull = $form.parent().find("input.search_filter_isnull").attr("name");
+                $form.parent().find("input.vDateField").each(function() {
+                    delete urlParams[this.name];
+                });
+                delete urlParams[query_isnull];
+                $form.find("input.vDateField").each(function() {
+                    if (this.value.trim()){
+                        urlParams[this.name] = this.value;
+                    }
+                });
+
+                reloadParams();
+            });
+        });
+    </script>
+</div>

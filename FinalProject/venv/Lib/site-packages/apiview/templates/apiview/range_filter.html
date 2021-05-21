@@ -1,0 +1,32 @@
+{% load i18n %}
+
+<div class="grp-module grp-range-filter">
+    <div class="grp-row">
+        <label>{% blocktrans with title|capfirst as filter_title %}{{ filter_title }}{% endblocktrans %}</label>
+        <form class="search_filter_form multi_filter_form">
+            <input type="text" name="{{ spec.parameter_name }}__gte" placeholder="-" value="{{ spec.val_gte }}" style="width: 30%;" class="vTextField" />
+            -
+            <input type="text" name="{{ spec.parameter_name }}__lte" placeholder="-" value="{{ spec.val_lte }}" style="width: 30%;" class="vTextField" />
+            <input type="submit" value="筛选" style="float: right; padding: 3px 9px; height: 22px; margin: 1px 0 0 0; max-width:25%;" class="search_filter_apply" />
+        </form>
+    </div>
+
+    <script type="text/javascript">
+        django.jQuery(function($) {
+            $(".grp-range-filter .search_filter_apply").on("click", function (event) {
+                event.preventDefault();
+
+                var $form = $(this).parents("form");
+                $form.parent().find("input.vTextField").each(function() {
+                    delete urlParams[this.name];
+                });
+                $form.find("input.vTextField").each(function() {
+                    if (this.value.trim()){
+                        urlParams[this.name] = this.value;
+                    }
+                });
+                reloadParams();
+            });
+        });
+    </script>
+</div>

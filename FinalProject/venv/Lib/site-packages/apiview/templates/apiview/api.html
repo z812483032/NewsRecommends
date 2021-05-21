@@ -1,0 +1,14 @@
+{% extends "rest_framework/base.html" %}
+{% load cache %}
+
+{% block description %}
+<div class="api-document">
+{{ description }}
+{% if response.renderer_context.view_options.param_document %}
+<h5>Params:</h5>
+<pre class="prettyprint" style="font-family: monospace,monospace">
+{{ response.renderer_context.view_options.param_document }}
+</pre>
+{% endif %}
+</div>
+{% endblock %}
