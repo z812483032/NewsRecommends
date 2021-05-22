@@ -14,8 +14,21 @@
 
 涉及框架：Django、jieba、selenium、BeautifulSoup、vue.js
 
-#### 软件功能结构
+#### 软件功能结构/页面展示
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/0521/115103_525fc802_5294263.png "功能结构图.png")
+
+用户端
+![![输入图片说明](https://images.gitee.com/uploads/images/2021/0522/093008_a4c54509_5294263.png "3.png")](https://images.gitee.com/uploads/images/2021/0522/092955_1dc4513b_5294263.png "2.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0522/093027_24d2e7c3_5294263.png "5.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0522/093042_c6e24eb2_5294263.png "7.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0522/093054_fdab818a_5294263.png "Snipaste_2021-05-16_15-06-00.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0522/093138_c168ffdb_5294263.png "Snipaste_2021-05-16_15-06-58.png")
+
+
+管理端
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0522/093157_d790df42_5294263.png "Snipaste_2021-05-16_15-07-21.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0522/093233_2d55078f_5294263.png "Snipaste_2021-05-16_15-07-35.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0522/093242_17a7d49a_5294263.png "Snipaste_2021-05-16_15-07-47.png")
 
 
 #### 安装教程
